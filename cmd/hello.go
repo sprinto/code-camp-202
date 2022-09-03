@@ -41,7 +41,7 @@ func init() { // initialization of package
 func main() {
 	fmt.Println(quote.Go())
 	fmt.Printf("After init - a = %d, c = %s\n", v, c)
-	otherFileInSamePackage()
+	//otherFileInSamePackage()
 	myOtherTypes()
 }
 
