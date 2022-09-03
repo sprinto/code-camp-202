@@ -18,6 +18,7 @@ import (
 	"os"
 )
 
+/*
 // array of all rpc replies
 type RpcReplies struct {
 	XMLName    xml.Name   `xml:"data"`
@@ -43,6 +44,26 @@ type Toaster struct {
 	ToasterModelNumber  string   `xml:"toasterModelNumber"`
 }
 
+*/
+
+// generated from https://www.onlinetool.io/xmltogo/
+type RpcReply struct {
+	XMLName   xml.Name `xml:"rpc-reply"`
+	Text      string   `xml:",chardata"`
+	MessageID string   `xml:"message-id,attr"`
+	Xmlns     string   `xml:"xmlns,attr"`
+	Data      struct {
+		Text    string `xml:",chardata"`
+		Toaster []struct {
+			Text                string `xml:",chardata"`
+			Xmlns               string `xml:"xmlns,attr"`
+			DarknessFactor      int    `xml:"darknessFactor"`
+			ToasterManufacturer string `xml:"toasterManufacturer"`
+			ToasterModelNumber  string `xml:"toasterModelNumber"`
+		} `xml:"toaster"`
+	} `xml:"data"`
+}
+
 func main() {
 
 	// Open our xmlFile
@@ -63,12 +84,12 @@ func main() {
 	}
 
 	// we initialize our rply array
-	var rpcReply RpcReplies
+	var rpcReply RpcReply
 
 	// we unmarshal our byteArray which contains our
 	// xmlFiles content into 'users' which we defined above
 	xml.Unmarshal(byteValue, &rpcReply)
-	toasters := rpcReply.RpcReplies[0].DataElements[0].Toasters
+	toasters := rpcReply.Data.Toaster
 
 	for i := 0; i < len(toasters); i++ {
 		fmt.Println("Manufacturer: " + toasters[i].ToasterManufacturer)

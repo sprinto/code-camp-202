@@ -2,7 +2,14 @@
 <rpc-reply message-id="c81f933d-8197-4dbc-94cf-2a6c3f8942b7" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
     <data>
         <toaster xmlns="http://netconfcentral.org/ns/toaster">
-            <darknessFactor>4711</darknessFactor>
+            <toasterManufacturer>Philips</toasterManufacturer>
+           <darknessFactor>123</darknessFactor>
         </toaster>
-    </data>
+       <toaster xmlns="http://netconfcentral.org/ns/toaster">
+            <toasterManufacturer>Acme</toasterManufacturer>
+            <toasterModelNumber>4711</toasterModelNumber>
+            <darknessFactor>411</darknessFactor>
+        </toaster>
+     </data>
+
 </rpc-reply>
